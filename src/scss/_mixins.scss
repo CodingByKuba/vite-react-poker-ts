@@ -1,16 +1,20 @@
-:root {
+@import "./variables";
+
+@mixin root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-size: calc(10px + 2vmin);
+
   color-scheme: light dark;
-  color: rgb(85, 238, 85);
-  background: linear-gradient(rgb(0, 43, 0), rgb(0, 63, 0));
+  color: $rootFontColor;
+  background: $rootBackgroundColor;
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
+@mixin body {
   margin: 0;
   height: 100vh;
-}/*# sourceMappingURL=index.css.map */
+}

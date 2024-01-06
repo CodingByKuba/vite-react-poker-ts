@@ -1,0 +1,9 @@
+@import "./scss/mixins";
+
+:root {
+  @include root;
+}
+
+body {
+  @include body;
+}
