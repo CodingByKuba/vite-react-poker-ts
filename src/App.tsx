@@ -1,10 +1,14 @@
-import CheckServerAlive from "./pages/CheckServerAlive";
+import PagesManager from "./components/PagesManager";
+import { FetchContextProvider } from "./context/FetchContext";
+import { UserContextProvider } from "./context/UserContext";
 
 const App = () => {
   return (
-    <>
-      <CheckServerAlive />
-    </>
+    <FetchContextProvider>
+      <UserContextProvider>
+        <PagesManager />
+      </UserContextProvider>
+    </FetchContextProvider>
   );
 };
 
