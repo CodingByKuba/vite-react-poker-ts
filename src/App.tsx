@@ -1,5 +1,11 @@
+import CheckServerAlive from "./pages/CheckServerAlive";
+
 const App = () => {
-  return <>Hello World!</>;
+  return (
+    <>
+      <CheckServerAlive />
+    </>
+  );
 };
 
 export default App;

@@ -1,5 +1,3 @@
-@import "./variables";
-
 @mixin root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-size: calc(10px + 2vmin);
@@ -17,4 +15,22 @@
 @mixin body {
   margin: 0;
   height: 100vh;
+  background: url("./assets/background.png");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin checkServer {
+  @include flexDisplay($gap: 0.5rem);
+  font-size: 0.6rem;
+}
+
+@mixin loader {
+  width: 2rem;
+  height: 2rem;
+  border-left: 0.2rem solid white;
+  border-radius: 50%;
+  animation: spin 0.5s linear infinite;
 }

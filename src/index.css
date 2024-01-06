@@ -1,3 +1,11 @@
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-size: calc(10px + 2vmin);
@@ -13,4 +21,26 @@
 body {
   margin: 0;
   height: 100vh;
+  background: url("./assets/background.png");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#server-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-direction: column;
+  font-size: 0.6rem;
+}
+
+#loader {
+  width: 2rem;
+  height: 2rem;
+  border-left: 0.2rem solid white;
+  border-radius: 50%;
+  animation: spin 0.5s linear infinite;
 }/*# sourceMappingURL=index.css.map */
