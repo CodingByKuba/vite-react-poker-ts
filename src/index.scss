@@ -15,6 +15,10 @@ body {
   @include checkServer;
 }
 
+#start-page {
+  @include startPage;
+}
+
 #loader {
   @include loader;
 }

@@ -4,7 +4,7 @@ export type ReducerActionType = {
 };
 
 export type FetchContextType = {
-  isPending: any;
+  isPending: boolean;
   fetchCallback: (arg?: any) => void;
 };
 

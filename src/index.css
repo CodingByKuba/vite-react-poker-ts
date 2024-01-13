@@ -37,6 +37,34 @@ body {
   font-size: 0.6rem;
 }
 
+#start-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  flex-direction: row;
+}
+#start-page #logo {
+  width: 40vh;
+  height: 40vh;
+  background-image: url("./assets/logo.png");
+  background-position: center;
+  background-size: cover;
+}
+@media (orientation: portrait) {
+  #start-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-direction: column-reverse;
+  }
+  #start-page #logo {
+    width: 40vmin;
+    height: 40vmin;
+  }
+}
+
 #loader {
   width: 2rem;
   height: 2rem;

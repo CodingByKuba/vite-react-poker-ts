@@ -27,6 +27,24 @@
   font-size: 0.6rem;
 }
 
+@mixin startPage {
+  @include flexDisplay($dir: row, $gap: 3rem);
+  #logo {
+    width: 40vh;
+    height: 40vh;
+    background-image: url("./assets/logo.png");
+    background-position: center;
+    background-size: cover;
+  }
+  @media (orientation: portrait) {
+    @include flexDisplay($dir: column-reverse, $gap: 0.5rem);
+    #logo {
+      width: 40vmin;
+      height: 40vmin;
+    }
+  }
+}
+
 @mixin loader {
   width: 2rem;
   height: 2rem;

@@ -27,7 +27,9 @@ const CheckServerAlive = () => {
     });
   };
 
-  useEffect(() => handleCheckServerAlive, []);
+  useEffect(() => {
+    handleCheckServerAlive();
+  }, []);
 
   return (
     <div id="server-check">
