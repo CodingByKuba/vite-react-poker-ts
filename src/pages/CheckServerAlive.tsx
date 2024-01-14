@@ -18,7 +18,7 @@ const CheckServerAlive = () => {
       successCallback: (response: any) => {
         if (response.data.server)
           return userDispatch({
-            type: ReducerActions.SET_DATA,
+            type: ReducerActions.SET_SERVER_ALIVE,
             payload: { serverAlive: true },
           });
         if (response.data.error) setFetchError(response.data.error);
