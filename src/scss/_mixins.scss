@@ -17,6 +17,7 @@
   height: 100vh;
   background: url("./assets/background.png");
   background-size: cover;
+  background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,6 +37,15 @@
     background-position: center;
     background-size: cover;
   }
+  #form {
+    @include flexDisplay($gap: 0.5rem);
+    & > input {
+      width: 100%;
+    }
+    & > #buttons {
+      @include flexDisplay($dir: row, $gap: 0.5rem);
+    }
+  }
   @media (orientation: portrait) {
     @include flexDisplay($dir: column-reverse, $gap: 0.5rem);
     #logo {
@@ -51,4 +61,30 @@
   border-left: 0.2rem solid white;
   border-radius: 50%;
   animation: spin 0.5s linear infinite;
+}
+
+@mixin button {
+  padding: 0.3rem;
+  font-size: 0.8rem;
+  color: $buttonFontColor;
+  background-color: $buttonBackgroundColor;
+  cursor: pointer;
+  border: none;
+  border-radius: 0.3rem;
+  &:focus,
+  &:hover {
+    background-color: $buttonHoverBackgroundColor;
+  }
+}
+
+@mixin input {
+  padding: 0.2rem;
+  font-size: 0.7rem;
+  border: 0.1rem solid $inputBorderColor;
+  background-color: $inputBackgroundColor;
+  color: $inputFontColor;
+  border-radius: 0.3rem;
+  &.centered {
+    text-align: center;
+  }
 }

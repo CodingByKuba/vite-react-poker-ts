@@ -10,7 +10,10 @@ const UserContext = createContext(defaultValue);
 export const UserContextProvider: React.FC<UserProviderType> = ({
   children,
 }) => {
-  const [userState, userDispatch] = useReducer(userReducer, userInitialState);
+  const [userState, userDispatch] = useReducer<any>(
+    userReducer,
+    userInitialState
+  );
 
   return (
     <UserContext.Provider

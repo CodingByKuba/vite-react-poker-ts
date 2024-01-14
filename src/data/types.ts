@@ -48,3 +48,8 @@ export type UserInitialStateType = {
   showPoints: boolean;
   soundFrom: 1 | 2 | 3 | 4 | 5;
 };
+
+export type GameInitialStateType = {
+  socketId: string;
+  roomState: any;
+};

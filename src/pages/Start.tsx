@@ -1,8 +1,10 @@
+import MainForm from "../components/MainForm";
+
 const Start = () => {
   return (
     <main id="start-page">
       <div id="logo"></div>
-      <div id="form">Start page (place for form)</div>
+      <MainForm />
     </main>
   );
 };

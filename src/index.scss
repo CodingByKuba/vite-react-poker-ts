@@ -22,3 +22,11 @@ body {
 #loader {
   @include loader;
 }
+
+button {
+  @include button;
+}
+
+input {
+  @include input;
+}

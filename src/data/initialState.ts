@@ -1,8 +1,12 @@
-import { UserInitialStateType } from "./types";
+import { GameInitialStateType, UserInitialStateType } from "./types";
 
 export const userInitialState: UserInitialStateType = {
   serverAlive: false,
-  id: "",
+  id: (
+    parseInt((Math.random() * 100000000).toFixed(0)) +
+    "-" +
+    new Date().getTime()
+  ).toString(),
   nick: "",
   roomId: "",
   roomOptions: {
@@ -20,4 +24,9 @@ export const userInitialState: UserInitialStateType = {
   },
   showPoints: true,
   soundFrom: 1,
+};
+
+export const gameInitialState: GameInitialStateType = {
+  socketId: "",
+  roomState: {},
 };

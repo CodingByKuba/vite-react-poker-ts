@@ -23,6 +23,7 @@ body {
   height: 100vh;
   background: url("./assets/background.png");
   background-size: cover;
+  background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,6 +52,23 @@ body {
   background-position: center;
   background-size: cover;
 }
+#start-page #form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-direction: column;
+}
+#start-page #form > input {
+  width: 100%;
+}
+#start-page #form > #buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-direction: row;
+}
 @media (orientation: portrait) {
   #start-page {
     display: flex;
@@ -71,4 +89,29 @@ body {
   border-left: 0.2rem solid white;
   border-radius: 50%;
   animation: spin 0.5s linear infinite;
+}
+
+button {
+  padding: 0.3rem;
+  font-size: 0.8rem;
+  color: rgb(135, 255, 135);
+  background-color: rgb(0, 53, 0);
+  cursor: pointer;
+  border: none;
+  border-radius: 0.3rem;
+}
+button:focus, button:hover {
+  background-color: rgb(0, 95, 0);
+}
+
+input {
+  padding: 0.2rem;
+  font-size: 0.7rem;
+  border: 0.1rem solid rgb(0, 36, 0);
+  background-color: rgb(135, 255, 135);
+  color: rgb(0, 53, 0);
+  border-radius: 0.3rem;
+}
+input.centered {
+  text-align: center;
 }/*# sourceMappingURL=index.css.map */
