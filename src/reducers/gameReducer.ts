@@ -12,7 +12,7 @@ const gameReducer = (
         ...state,
         serverAlive: (action.payload.socketId as string) || "",
       };
-    case ReducerActions.SER_ROOM_STATE:
+    case ReducerActions.SET_ROOM_STATE:
       if (!action.payload || typeof action.payload !== "object") return state;
       return {
         ...state,

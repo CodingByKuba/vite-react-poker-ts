@@ -69,6 +69,13 @@ body {
   gap: 0.5rem;
   flex-direction: row;
 }
+#start-page #form > #form-error {
+  background-color: rgb(58, 0, 0);
+  color: rgb(255, 142, 142);
+  padding: 0.3rem;
+  font-size: 0.7rem;
+  border-radius: 0.4rem;
+}
 @media (orientation: portrait) {
   #start-page {
     display: flex;

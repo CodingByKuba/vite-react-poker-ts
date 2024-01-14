@@ -45,6 +45,13 @@
     & > #buttons {
       @include flexDisplay($dir: row, $gap: 0.5rem);
     }
+    & > #form-error {
+      background-color: $formErrorBackgroundColor;
+      color: $formErrorFontColor;
+      padding: 0.3rem;
+      font-size: 0.7rem;
+      border-radius: 0.4rem;
+    }
   }
   @media (orientation: portrait) {
     @include flexDisplay($dir: column-reverse, $gap: 0.5rem);
