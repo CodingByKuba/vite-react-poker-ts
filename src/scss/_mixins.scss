@@ -30,6 +30,7 @@
 
 @mixin startPage {
   @include flexDisplay($dir: row, $gap: 3rem);
+  position: relative;
   #logo {
     width: 40vh;
     height: 40vh;
@@ -62,6 +63,36 @@
   }
 }
 
+@mixin optionsButtonContainer {
+  position: fixed;
+  right: 1.3rem;
+  top: 1.3rem;
+}
+
+@mixin roomOptions {
+  @include flexDisplay($dir: column, $gap: 0.5rem);
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: -100vh;
+  background: rgba($color: #000000, $alpha: 0.9);
+  transition: transform 0.2s linear;
+  &.visible {
+    transform: translateY(100vh);
+  }
+  #cardset-points {
+    @include flexDisplay($dir: row, $gap: 1rem);
+    .column {
+      @include flexDisplay($dir: column, $gap: 0.5rem);
+      .row {
+        @include flexDisplay($dir: column, $gap: 0.3rem);
+        font-size: 0.7rem;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
 @mixin loader {
   width: 2rem;
   height: 2rem;
@@ -75,9 +106,15 @@
   font-size: 0.8rem;
   color: $buttonFontColor;
   background-color: $buttonBackgroundColor;
+  @include flexDisplay($dir: row, $gap: 0.5rem);
   cursor: pointer;
   border: none;
   border-radius: 0.3rem;
+  &.rounded {
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+  }
   &:focus,
   &:hover {
     background-color: $buttonHoverBackgroundColor;

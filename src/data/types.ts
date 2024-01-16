@@ -46,10 +46,15 @@ export type UserInitialStateType = {
   roomId: string;
   roomOptions: RoomOptionsType;
   showPoints: boolean;
-  soundFrom: 1 | 2 | 3 | 4 | 5;
+  soundFrom: 0 | 1 | 2 | 3 | 4 | 5;
 };
 
 export type GameInitialStateType = {
   socketId: string;
   roomState: any;
+};
+
+export type RoomOptionsComponentType = {
+  visible: boolean;
+  setRoomOptionsVisible: React.Dispatch<React.SetStateAction<boolean>>;
 };

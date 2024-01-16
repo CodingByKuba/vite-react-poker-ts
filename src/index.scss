@@ -19,6 +19,14 @@ body {
   @include startPage;
 }
 
+#room-options {
+  @include roomOptions;
+}
+
+#options-button-container {
+  @include optionsButtonContainer;
+}
+
 #loader {
   @include loader;
 }
