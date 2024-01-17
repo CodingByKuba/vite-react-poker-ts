@@ -12,6 +12,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+@mixin all {
+  box-sizing: border-box;
+}
+
 @mixin body {
   margin: 0;
   height: 100vh;
@@ -89,6 +93,57 @@
         font-size: 0.7rem;
         font-weight: bold;
       }
+    }
+  }
+}
+
+@mixin card {
+  @include flexDisplay($dir: column);
+  width: 2rem;
+  height: 3rem;
+  border: 0.1rem solid black;
+  border-radius: 0.2rem;
+  background-color: white;
+  user-select: none;
+  transition: all 0.1s linear;
+  p {
+    margin: 0;
+  }
+  &.black {
+    color: black;
+  }
+  &.red {
+    color: red;
+  }
+  &.hidden {
+    p {
+      display: none;
+    }
+    background: $cardHiddenBackground;
+  }
+  &.selected {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 0 0.5rem yellow;
+  }
+}
+
+@mixin waitList {
+  @include flexDisplay($dir: column, $justify: flex-start, $gap: 0.2rem);
+  width: 100%;
+  height: 100vh;
+  padding-top: 3rem;
+  nav {
+    @include flexDisplay($dir: row, $gap: 0.2rem);
+  }
+  div {
+    width: 100%;
+    background-color: rgba($color: #000000, $alpha: 0.7);
+    padding: 0.2rem;
+    border-radius: 5rem;
+    @include flexDisplay;
+    &.ready {
+      background-color: $buttonFontColor;
+      color: $buttonBackgroundColor;
     }
   }
 }

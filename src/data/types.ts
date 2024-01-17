@@ -58,3 +58,9 @@ export type RoomOptionsComponentType = {
   visible: boolean;
   setRoomOptionsVisible: React.Dispatch<React.SetStateAction<boolean>>;
 };
+
+export type CardComponentType = {
+  value: string;
+  selected?: boolean;
+  hidden?: boolean;
+};

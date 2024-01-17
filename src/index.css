@@ -18,6 +18,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   height: 100vh;
@@ -135,6 +139,73 @@ body {
   position: fixed;
   right: 1.3rem;
   top: 1.3rem;
+}
+
+#card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 2rem;
+  height: 3rem;
+  border: 0.1rem solid black;
+  border-radius: 0.2rem;
+  background-color: white;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  transition: all 0.1s linear;
+}
+#card p {
+  margin: 0;
+}
+#card.black {
+  color: black;
+}
+#card.red {
+  color: red;
+}
+#card.hidden {
+  background: linear-gradient(rgb(255, 216, 216), rgb(255, 157, 157));
+}
+#card.hidden p {
+  display: none;
+}
+#card.selected {
+  transform: translateY(-0.5rem);
+  box-shadow: 0 0 0.5rem yellow;
+}
+
+#wait-list {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.2rem;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  padding-top: 3rem;
+}
+#wait-list nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  flex-direction: row;
+}
+#wait-list div {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 0.2rem;
+  border-radius: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+#wait-list div.ready {
+  background-color: rgb(135, 255, 135);
+  color: rgb(0, 53, 0);
 }
 
 #loader {

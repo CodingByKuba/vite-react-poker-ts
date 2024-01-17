@@ -7,6 +7,10 @@
   @include root;
 }
 
+* {
+  @include all;
+}
+
 body {
   @include body;
 }
@@ -25,6 +29,14 @@ body {
 
 #options-button-container {
   @include optionsButtonContainer;
+}
+
+#card {
+  @include card;
+}
+
+#wait-list {
+  @include waitList;
 }
 
 #loader {
