@@ -20,6 +20,17 @@
     transform: translateX(-200%);
   }
 }
+@keyframes opacityBlink {
+  0% {
+    background: rgba(0, 0, 0, 0.9);
+  }
+  50% {
+    background: rgba(0, 0, 0, 0.7);
+  }
+  100% {
+    background: rgba(0, 0, 0, 0.9);
+  }
+}
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-size: calc(10px + 2vmin);
@@ -171,6 +182,7 @@ body {
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
+  cursor: pointer;
   transition: all 0.1s linear;
 }
 #card p {
@@ -313,12 +325,13 @@ input.centered {
 #game {
   width: 100%;
   height: 100vh;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
-#game > #game-top-bar {
+#game #game-top-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -328,19 +341,19 @@ input.centered {
   padding: 0.2rem;
   background: linear-gradient(rgb(0, 71, 0), rgb(0, 99, 0));
 }
-#game > #game-top-bar > div {
+#game #game-top-bar div {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.2rem;
   flex-direction: row;
 }
-#game > #game-top-bar div:nth-child(3) {
+#game #game-top-bar div:nth-child(3) {
   text-align: center;
   width: 100%;
   font-size: 0.8rem;
 }
-#game > #game-content {
+#game #game-content {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -348,12 +361,62 @@ input.centered {
   width: 100%;
   flex: 1;
 }
-#game > #game-bottom-bar {
+#game #game-bottom-bar {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   width: 100%;
   padding: 0.3rem;
+  position: relative;
   background: linear-gradient(rgb(0, 99, 0), rgb(0, 71, 0));
+}
+#game #game-bottom-bar #my-cards {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-direction: row;
+}
+#game #game-bottom-bar #card-set {
+  position: absolute;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  font-weight: bold;
+  top: 1rem;
+  text-align: center;
+  color: white;
+}
+#game #game-bottom-bar #finish-round {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.7);
+  font-size: 2rem;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  animation: opacityBlink 1s linear infinite;
+}
+#game #swipe-cards {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.9);
+  border-radius: 0.6rem;
+  width: 70%;
+  padding: 0.5rem;
+  animation: opacityBlink 1s linear infinite;
+}
+#game #swipe-cards p {
+  margin: 0.2rem;
 }/*# sourceMappingURL=index.css.map */

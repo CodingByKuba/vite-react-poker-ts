@@ -63,6 +63,7 @@ export type CardComponentType = {
   value: string;
   selected?: boolean;
   hidden?: boolean;
+  onClick?: () => React.SetStateAction<number>;
 };
 
 export type NotificationType = {

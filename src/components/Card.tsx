@@ -3,10 +3,12 @@ import { parseCardCode } from "../data/utils";
 
 const Card = (props: CardComponentType) => {
   const symbols = parseCardCode(props.value);
+  const { onClick } = props;
 
   return (
     <div
       id="card"
+      onClick={onClick ? onClick : undefined}
       className={
         symbols[2] +
         (props.selected ? " selected" : "") +

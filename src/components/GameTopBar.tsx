@@ -19,7 +19,7 @@ const GameTopBar = (props: any) => {
         </button>
         {!isRoundStarted && isRoomOwner && (
           <>
-            <button onClick={() => socket.emit("client-finish-game")}>
+            <button onClick={() => socket.emit("client-stop-game")}>
               Finish game
             </button>
             <button onClick={() => socket.emit("client-start-round")}>
