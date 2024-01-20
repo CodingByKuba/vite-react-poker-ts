@@ -9,7 +9,11 @@ $inputBackgroundColor: rgb(135, 255, 135);
 $inputBorderColor: rgb(0, 36, 0);
 $inputFontColor: rgb(0, 53, 0);
 
-$formErrorBackgroundColor: rgb(58, 0, 0);
-$formErrorFontColor: rgb(255, 142, 142);
-
 $cardHiddenBackground: linear-gradient(rgb(255, 216, 216), rgb(255, 157, 157));
+
+$notificationBackground: linear-gradient(
+  rgb(147, 255, 147),
+  rgb(182, 235, 182)
+);
+$notificationBorderColor: rgb(0, 34, 0);
+$notificationFontColor: rgb(0, 77, 0);

@@ -10,6 +10,8 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  position: relative;
 }
 
 @mixin all {
@@ -49,13 +51,6 @@
     }
     & > #buttons {
       @include flexDisplay($dir: row, $gap: 0.5rem);
-    }
-    & > #form-error {
-      background-color: $formErrorBackgroundColor;
-      color: $formErrorFontColor;
-      padding: 0.3rem;
-      font-size: 0.7rem;
-      border-radius: 0.4rem;
     }
   }
   @media (orientation: portrait) {
@@ -186,4 +181,29 @@
   &.centered {
     text-align: center;
   }
+}
+
+@mixin notificationBox {
+  position: fixed;
+  @include flexDisplay($dir: column);
+  width: 60vw;
+  max-width: 400px;
+  max-height: 100vh;
+  top: 0;
+  left: 0;
+  padding-left: 0.2rem;
+}
+
+@mixin notification {
+  background: $notificationBackground;
+  border: 0.1rem solid $notificationBorderColor;
+  color: $notificationFontColor;
+  margin: 0.2rem;
+  width: 100%;
+  border-radius: 0.3rem;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-align: center;
+  transform: translateX(-200%);
 }

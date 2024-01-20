@@ -6,3 +6,18 @@
     transform: rotate(360deg);
   }
 }
+
+@keyframes showAndHide {
+  0% {
+    transform: translateX(-200%);
+  }
+  10% {
+    transform: translateX(0);
+  }
+  90% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-200%);
+  }
+}

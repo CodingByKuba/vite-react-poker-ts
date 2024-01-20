@@ -1,6 +1,8 @@
+import NotificationsBox from "./components/NotificationsBox";
 import PagesManager from "./components/PagesManager";
 import { FetchContextProvider } from "./context/FetchContext";
 import { GameContextProvider } from "./context/GameContext";
+import { NotificationsContextProvider } from "./context/NotificationsContext";
 import { UserContextProvider } from "./context/UserContext";
 
 const App = () => {
@@ -8,7 +10,10 @@ const App = () => {
     <FetchContextProvider>
       <UserContextProvider>
         <GameContextProvider>
-          <PagesManager />
+          <NotificationsContextProvider>
+            <PagesManager />
+            <NotificationsBox />
+          </NotificationsContextProvider>
         </GameContextProvider>
       </UserContextProvider>
     </FetchContextProvider>

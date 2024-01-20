@@ -50,3 +50,11 @@ button {
 input {
   @include input;
 }
+
+#notifications-box {
+  @include notificationBox;
+}
+
+#notification {
+  @include notification;
+}

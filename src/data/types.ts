@@ -64,3 +64,8 @@ export type CardComponentType = {
   selected?: boolean;
   hidden?: boolean;
 };
+
+export type NotificationType = {
+  id: string;
+  message: string;
+};

@@ -3,22 +3,20 @@ import { useUserContext } from "../context/UserContext";
 import { ReducerActions, URL } from "../data/enums";
 import { useFetchContext } from "../context/FetchContext";
 import Loader from "./Loader";
-import { useState } from "react";
 import config from "../data/config";
 import { useGameContext } from "../context/GameContext";
+import { useNotificationsContext } from "../context/NotificationsContext";
 
 const MainForm = () => {
   const { userState, userDispatch } = useUserContext();
   const { isPending, fetchCallback } = useFetchContext();
   const { gameDispatch } = useGameContext();
-
-  const [formError, setFormError] = useState<string>("");
+  const { addNotification } = useNotificationsContext();
 
   const handleCreateRoom = () => {
-    if (!userState.nick) return setFormError("Enter your nick");
+    if (!userState.nick) return addNotification("Enter your nick");
     if (!userState.roomId || userState.roomId.length !== 6)
-      return setFormError("Room ID is not correct");
-    setFormError("");
+      return addNotification("Room ID is not correct");
     fetchCallback({
       url: URL.room,
       method: "POST",
@@ -43,22 +41,20 @@ const MainForm = () => {
         appVersion: config.APP_VERSION,
       },
       successCallback: (response: any) => {
-        if (response.data.error) return setFormError(response.data.error);
-        console.log(response.data);
+        if (response.data.error) return addNotification(response.data.error);
         gameDispatch({
           type: ReducerActions.SET_ROOM_STATE,
           payload: response.data,
         });
       },
-      errorCallback: (error: any) => setFormError(error.message),
+      errorCallback: (error: any) => addNotification(error.message),
     });
   };
 
   const handleJoinRoom = () => {
-    if (!userState.nick) return setFormError("Enter your nick");
+    if (!userState.nick) return addNotification("Enter your nick");
     if (!userState.roomId || userState.roomId.length !== 6)
-      return setFormError("Room ID is not correct");
-    setFormError("");
+      return addNotification("Room ID is not correct");
     fetchCallback({
       url: URL.room,
       method: "PUT",
@@ -70,20 +66,19 @@ const MainForm = () => {
         appVersion: config.APP_VERSION,
       },
       successCallback: (response: any) => {
-        if (response.data.error) return setFormError(response.data.error);
+        if (response.data.error) return addNotification(response.data.error);
         console.log(response.data);
         gameDispatch({
           type: ReducerActions.SET_ROOM_STATE,
           payload: response.data,
         });
       },
-      errorCallback: (error: any) => setFormError(error.message),
+      errorCallback: (error: any) => addNotification(error.message),
     });
   };
 
   return (
     <div id="form">
-      {formError && <div id="form-error">{formError}</div>}
       <input
         type="text"
         name="name"
