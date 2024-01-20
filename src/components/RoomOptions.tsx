@@ -38,6 +38,7 @@ const RoomOptions = (props: RoomOptionsComponentType) => {
             HIGH CARD
             <input
               type="number"
+              className="centered"
               min={0}
               value={userState.roomOptions.pointsHighCard}
               onChange={(e) =>
@@ -55,6 +56,7 @@ const RoomOptions = (props: RoomOptionsComponentType) => {
             TWO PAIRS
             <input
               type="number"
+              className="centered"
               min={0}
               value={userState.roomOptions.pointsDoublePair}
               onChange={(e) =>
@@ -72,6 +74,7 @@ const RoomOptions = (props: RoomOptionsComponentType) => {
             STRAIGHT
             <input
               type="number"
+              className="centered"
               min={0}
               value={userState.roomOptions.pointsStraight}
               onChange={(e) =>
@@ -89,6 +92,7 @@ const RoomOptions = (props: RoomOptionsComponentType) => {
             FULL HOUSE
             <input
               type="number"
+              className="centered"
               min={0}
               value={userState.roomOptions.pointsFull}
               onChange={(e) =>
@@ -106,6 +110,7 @@ const RoomOptions = (props: RoomOptionsComponentType) => {
             STRAIGHT FLUSH
             <input
               type="number"
+              className="centered"
               min={0}
               value={userState.roomOptions.pointsStraightFlush}
               onChange={(e) =>
@@ -125,6 +130,7 @@ const RoomOptions = (props: RoomOptionsComponentType) => {
             ONE PAIR
             <input
               type="number"
+              className="centered"
               min={0}
               value={userState.roomOptions.pointsPair}
               onChange={(e) =>
@@ -142,6 +148,7 @@ const RoomOptions = (props: RoomOptionsComponentType) => {
             THREE OF A KIND
             <input
               type="number"
+              className="centered"
               min={0}
               value={userState.roomOptions.pointsThree}
               onChange={(e) =>
@@ -159,6 +166,7 @@ const RoomOptions = (props: RoomOptionsComponentType) => {
             FLUSH
             <input
               type="number"
+              className="centered"
               min={0}
               value={userState.roomOptions.pointsFlush}
               onChange={(e) =>
@@ -176,6 +184,7 @@ const RoomOptions = (props: RoomOptionsComponentType) => {
             FOUR OF A KIND
             <input
               type="number"
+              className="centered"
               min={0}
               value={userState.roomOptions.pointsFour}
               onChange={(e) =>
@@ -193,6 +202,7 @@ const RoomOptions = (props: RoomOptionsComponentType) => {
             ROYAL FLUSH
             <input
               type="number"
+              className="centered"
               min={0}
               value={userState.roomOptions.pointsRoyalFlush}
               onChange={(e) =>

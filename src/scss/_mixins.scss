@@ -10,7 +10,12 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
 
+@mixin rootDiv {
+  width: 100%;
+  height: 100vh;
+  @include flexDisplay();
   position: relative;
 }
 
@@ -140,6 +145,19 @@
       background-color: $buttonFontColor;
       color: $buttonBackgroundColor;
     }
+    &.owner {
+      color: $roomOwnerFontColor;
+      &.ready {
+        color: $roomOwnerFontDarkColor;
+      }
+    }
+    &.you {
+      color: $isYouFontColor;
+      font-weight: bold;
+      &.ready {
+        color: $isYouFontDarkColor;
+      }
+    }
   }
 }
 
@@ -192,6 +210,7 @@
   top: 0;
   left: 0;
   padding-left: 0.2rem;
+  z-index: 99999;
 }
 
 @mixin notification {
@@ -206,4 +225,36 @@
   font-weight: bold;
   text-align: center;
   transform: translateX(-200%);
+}
+
+@mixin game {
+  width: 100%;
+  height: 100vh;
+  @include flexDisplay();
+  & > #game-top-bar {
+    @include flexDisplay($dir: row, $justify: space-between);
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 0.2rem;
+    background: $gameTopBoardBackground;
+    & > div {
+      @include flexDisplay($dir: row, $gap: 0.2rem);
+    }
+    div:nth-child(3) {
+      text-align: center;
+      width: 100%;
+      font-size: 0.8rem;
+    }
+  }
+  & > #game-content {
+    @include flexDisplay();
+    width: 100%;
+    flex: 1;
+  }
+  & > #game-bottom-bar {
+    @include flexDisplay();
+    width: 100%;
+    padding: 0.3rem;
+    background: $gameBottomBoardBackground;
+  }
 }

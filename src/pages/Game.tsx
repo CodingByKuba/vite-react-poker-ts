@@ -4,6 +4,7 @@ import { useGameContext } from "../context/GameContext";
 import { useSocket } from "../context/SocketContext";
 import { ReducerActions } from "../data/enums";
 import { useNotificationsContext } from "../context/NotificationsContext";
+import GameBoard from "../components/GameBoard";
 
 const Game = () => {
   const { gameState, gameDispatch } = useGameContext();
@@ -25,17 +26,7 @@ const Game = () => {
 
   if (!gameState.roomState.gameStarted) return <WaitList socket={socket} />;
 
-  return (
-    <div id="game">
-      <button
-        onClick={() => {
-          gameDispatch({ type: ReducerActions.RESET });
-        }}
-      >
-        Go back
-      </button>
-    </div>
-  );
+  return <GameBoard socket={socket} />;
 };
 
 export default Game;

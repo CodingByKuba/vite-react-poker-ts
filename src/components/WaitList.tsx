@@ -47,13 +47,35 @@ const WaitList = (props: any) => {
         )}
       </nav>
 
-      <span>Waiting for players...</span>
-      <span>
-        ({gameState.roomState.players.length}/{gameState.roomState.maxPlayers})
-      </span>
+      {isRoomOwner && (
+        <>
+          <span>
+            {!isMinTwoPlayers
+              ? "Not enough players"
+              : gameState.roomState.players.length ===
+                gameState.roomState.maxPlayers
+              ? allPlayersReady
+                ? "Time to start!"
+                : "Waiting for ready players..."
+              : allPlayersReady
+              ? "Time to start!"
+              : "Waiting for players..."}
+          </span>
+          <span>
+            ({gameState.roomState.players.length}/
+            {gameState.roomState.maxPlayers})
+          </span>
+        </>
+      )}
+
       <hr />
       {gameState.roomState.players.map((el: any) => (
-        <div key={el.id} className={el.ready ? "ready" : ""}>
+        <div
+          key={el.id}
+          className={`${el.ready ? "ready" : ""} ${
+            gameState.roomState.roomOwner === el.id ? "owner" : ""
+          } ${userState.id === el.id ? "you" : ""}`}
+        >
           {el.nick}
         </div>
       ))}

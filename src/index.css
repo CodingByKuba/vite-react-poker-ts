@@ -30,7 +30,6 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  position: relative;
 }
 
 * {
@@ -46,6 +45,16 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#root {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
 }
 
 #server-check {
@@ -215,6 +224,19 @@ body {
   background-color: rgb(135, 255, 135);
   color: rgb(0, 53, 0);
 }
+#wait-list div.owner {
+  color: rgb(180, 180, 236);
+}
+#wait-list div.owner.ready {
+  color: rgb(87, 87, 116);
+}
+#wait-list div.you {
+  color: rgb(255, 255, 48);
+  font-weight: bold;
+}
+#wait-list div.you.ready {
+  color: rgb(128, 128, 9);
+}
 
 #loader {
   width: 2rem;
@@ -271,6 +293,7 @@ input.centered {
   top: 0;
   left: 0;
   padding-left: 0.2rem;
+  z-index: 99999;
 }
 
 #notification {
@@ -285,4 +308,52 @@ input.centered {
   font-weight: bold;
   text-align: center;
   transform: translateX(-200%);
+}
+
+#game {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+#game > #game-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 0.2rem;
+  background: linear-gradient(rgb(0, 71, 0), rgb(0, 99, 0));
+}
+#game > #game-top-bar > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  flex-direction: row;
+}
+#game > #game-top-bar div:nth-child(3) {
+  text-align: center;
+  width: 100%;
+  font-size: 0.8rem;
+}
+#game > #game-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+}
+#game > #game-bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 0.3rem;
+  background: linear-gradient(rgb(0, 99, 0), rgb(0, 71, 0));
 }/*# sourceMappingURL=index.css.map */
