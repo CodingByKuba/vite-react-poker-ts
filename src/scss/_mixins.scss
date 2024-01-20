@@ -246,12 +246,48 @@
       text-align: center;
       width: 100%;
       font-size: 0.8rem;
+      font-weight: bold;
+      letter-spacing: 0.2rem;
     }
   }
   #game-content {
-    @include flexDisplay();
+    @include flexDisplay($justify: flex-start, $gap: 0.5rem);
+    padding-top: 0.5rem;
     width: 100%;
     flex: 1;
+    #player {
+      background: $playerBackground;
+      border-radius: 0.4rem;
+      padding: 0.3rem;
+      width: 95%;
+      max-width: 700px;
+      &.turn {
+        animation: playerBlink 1s linear infinite;
+      }
+      #player-info {
+        @include flexDisplay($dir: row, $gap: 0.5rem, $justify: flex-start);
+        span {
+          display: block;
+          font-size: 0.8rem;
+          font-weight: bold;
+          color: $playerInfoFontColor;
+        }
+        div {
+          background-color: rgba($color: #000000, $alpha: 0.8);
+          color: white;
+          font-weight: bold;
+          text-align: center;
+          flex: 1;
+          border-radius: 1rem;
+        }
+      }
+      #player-cards {
+        @include flexDisplay($dir: row);
+        #card {
+          transform: scale(0.9);
+        }
+      }
+    }
   }
   #game-bottom-bar {
     @include flexDisplay();

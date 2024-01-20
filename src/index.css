@@ -31,6 +31,17 @@
     background: rgba(0, 0, 0, 0.9);
   }
 }
+@keyframes playerBlink {
+  0% {
+    background: rgb(255, 255, 125);
+  }
+  50% {
+    background: rgb(151, 151, 70);
+  }
+  100% {
+    background: rgb(255, 255, 125);
+  }
+}
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-size: calc(10px + 2vmin);
@@ -352,14 +363,58 @@ input.centered {
   text-align: center;
   width: 100%;
   font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 0.2rem;
 }
 #game #game-content {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
   flex-direction: column;
+  padding-top: 0.5rem;
   width: 100%;
   flex: 1;
+}
+#game #game-content #player {
+  background: rgb(255, 255, 125);
+  border-radius: 0.4rem;
+  padding: 0.3rem;
+  width: 95%;
+  max-width: 700px;
+}
+#game #game-content #player.turn {
+  animation: playerBlink 1s linear infinite;
+}
+#game #game-content #player #player-info {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  flex-direction: row;
+}
+#game #game-content #player #player-info span {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: rgb(0, 61, 0);
+}
+#game #game-content #player #player-info div {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  flex: 1;
+  border-radius: 1rem;
+}
+#game #game-content #player #player-cards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+#game #game-content #player #player-cards #card {
+  transform: scale(0.9);
 }
 #game #game-bottom-bar {
   display: flex;

@@ -4,6 +4,7 @@ import { useUserContext } from "../context/UserContext";
 import GameBottomBar from "./GameBottomBar";
 import GameTopBar from "./GameTopBar";
 import SwipeCards from "./SwipeCards";
+import GameContent from "./GameContent";
 
 const GameBoard = (props: any) => {
   const { gameState } = useGameContext();
@@ -19,6 +20,8 @@ const GameBoard = (props: any) => {
   const currentRound = roomState.roundCount;
   const roundReadyToBeFinished =
     roomState.players.filter((el: any) => el.turn === true).length === 0;
+
+  const players = roomState.players.filter((el: any) => el.id !== userState.id);
 
   const YOU = roomState.players.filter((el: any) => el.id === userState.id)[0];
   const myCards = YOU.cards;
@@ -36,7 +39,7 @@ const GameBoard = (props: any) => {
         isRoomOwner={isRoomOwner}
         currentRound={currentRound}
       />
-      <div id="game-content">players</div>
+      <GameContent players={players} />
       <GameBottomBar
         socket={socket}
         myCards={myCards}

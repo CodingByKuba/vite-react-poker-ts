@@ -67,7 +67,6 @@ const MainForm = () => {
       },
       successCallback: (response: any) => {
         if (response.data.error) return addNotification(response.data.error);
-        console.log(response.data);
         gameDispatch({
           type: ReducerActions.SET_ROOM_STATE,
           payload: response.data,
