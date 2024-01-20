@@ -1,12 +1,9 @@
 import { GameInitialStateType, UserInitialStateType } from "./types";
+import { generateRandomId } from "./utils";
 
 export const userInitialState: UserInitialStateType = {
   serverAlive: false,
-  id: (
-    parseInt((Math.random() * 100000000).toFixed(0)) +
-    "-" +
-    new Date().getTime()
-  ).toString(),
+  id: generateRandomId(),
   nick: "",
   roomId: "",
   roomOptions: {

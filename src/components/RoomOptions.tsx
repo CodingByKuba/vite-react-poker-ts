@@ -3,6 +3,7 @@ import { ReducerActions } from "../data/enums";
 import { RoomOptionsComponentType } from "../data/types";
 import { BsArrowLeftCircle } from "react-icons/bs";
 import Card from "./Card";
+import { countMaxPlayers } from "../data/utils";
 
 const RoomOptions = (props: RoomOptionsComponentType) => {
   const { userState, userDispatch } = useUserContext();
@@ -16,7 +17,7 @@ const RoomOptions = (props: RoomOptionsComponentType) => {
         <BsArrowLeftCircle />
       </button>
       Start from card (max{" "}
-      {Math.floor((47 - userState.roomOptions.startFromCard * 4) / 5)} players):
+      {countMaxPlayers(userState.roomOptions.startFromCard)} players):
       <Card value={userState.roomOptions.startFromCard + 2 + "-H"} />
       <input
         type="range"

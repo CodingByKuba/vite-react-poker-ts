@@ -1,16 +1,23 @@
 import { useGameContext } from "../context/GameContext";
-import { useSocket } from "../context/SocketContext";
 import { useUserContext } from "../context/UserContext";
 import { ReducerActions } from "../data/enums";
 
 const WaitList = (props: any) => {
   const { gameState, gameDispatch } = useGameContext();
   const { userState } = useUserContext();
-  const socket: any = useSocket();
+  const { socket } = props;
 
   const readyState = gameState.roomState.players.filter(
     (el: any) => el.id === userState.id
   )[0].ready;
+
+  const allPlayersReady =
+    gameState.roomState.players.filter((el: any) => el.ready === false)
+      .length === 0;
+
+  const isRoomOwner = gameState.roomState.roomOwner === userState.id;
+
+  const isMinTwoPlayers = gameState.roomState.players.length >= 2;
 
   return (
     <div id="wait-list">
@@ -29,12 +36,26 @@ const WaitList = (props: any) => {
         >
           {readyState ? "Ready" : "Not ready"}
         </button>
+        {allPlayersReady && isRoomOwner && isMinTwoPlayers && (
+          <button
+            onClick={() => {
+              socket.emit("client-start-game");
+            }}
+          >
+            Start game
+          </button>
+        )}
       </nav>
 
       <span>Waiting for players...</span>
+      <span>
+        ({gameState.roomState.players.length}/{gameState.roomState.maxPlayers})
+      </span>
       <hr />
       {gameState.roomState.players.map((el: any) => (
-        <div className={el.ready ? "ready" : ""}>{el.nick}</div>
+        <div key={el.id} className={el.ready ? "ready" : ""}>
+          {el.nick}
+        </div>
       ))}
     </div>
   );

@@ -11,13 +11,15 @@ const Game = () => {
   useEffect(() => {
     if (socket === null || socket === undefined) return;
     socket.on("server-update-room", (data: any) => {
+      console.log(data);
       gameDispatch({ type: ReducerActions.SET_ROOM_STATE, payload: data.room });
     });
-  }, []);
+    socket.on("disconnect", () => {
+      gameDispatch({ type: ReducerActions.RESET });
+    });
+  }, [socket]);
 
-  console.log();
-
-  if (!gameState.roomState.gameStarted) return <WaitList />;
+  if (!gameState.roomState.gameStarted) return <WaitList socket={socket} />;
 
   return (
     <div id="game">

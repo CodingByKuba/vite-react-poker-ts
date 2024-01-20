@@ -1,3 +1,10 @@
+export const generateRandomId = () =>
+  (
+    parseInt((Math.random() * 100000000).toFixed(0)) +
+    "-" +
+    new Date().getTime()
+  ).toString();
+
 export const parseCardCode = (code: string): string[] => {
   let symbols = code.split("-");
   symbols[0] = parseInt(symbols[0]).toString();
@@ -20,3 +27,6 @@ export const parseCardCode = (code: string): string[] => {
 
   return symbols;
 };
+
+export const countMaxPlayers = (startFromCard: number) =>
+  Math.floor((47 - startFromCard * 4) / 5);

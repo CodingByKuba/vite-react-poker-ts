@@ -25,7 +25,7 @@ export const SocketContextProvider = ({
     setSocket(newSocket);
 
     return () => newSocket.close();
-  }, []);
+  }, [userState.id, userState.nick, userState.roomId]);
 
   return (
     <SocketContext.Provider value={socket}>{children}</SocketContext.Provider>
