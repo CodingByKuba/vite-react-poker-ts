@@ -51,7 +51,7 @@ export type UserInitialStateType = {
 
 export type GameInitialStateType = {
   socketId: string;
-  roomState: any;
+  roomState: RoomType | {};
 };
 
 export type RoomOptionsComponentType = {
@@ -69,4 +69,28 @@ export type CardComponentType = {
 export type NotificationType = {
   id: string;
   message: string;
+};
+
+export type PlayerType = {
+  additionalPoints: number;
+  cardSetType: string;
+  cards: string[];
+  cardsChanged?: boolean;
+  id: string;
+  nick: string;
+  points: number;
+  pointsSet?: number[];
+  ready: boolean;
+  turn: boolean;
+};
+
+export type RoomType = {
+  cardSet?: number;
+  gameStarted: boolean;
+  id: string;
+  maxPlayers: number;
+  players: PlayerType[];
+  roomOwner: Pick<PlayerType, "id">;
+  roundCount: number;
+  roundStarted: boolean;
 };

@@ -1,12 +1,12 @@
+import { PlayerType } from "../data/types";
 import Player from "./Player";
 
 const GameContent = (props: any) => {
   const { players } = props;
-  console.log(players);
 
   return (
     <div id="game-content">
-      {players.map((el: any) => (
+      {players.map((el: PlayerType) => (
         <Player key={el.id} data={el} />
       ))}
     </div>

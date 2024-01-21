@@ -13,7 +13,7 @@ const Player = (props: any) => {
         {data.cardSetType && <div>{data.cardSetType}</div>}
       </div>
       <div id="player-cards">
-        {data.cards.map((el: any) => (
+        {data.cards.map((el: string) => (
           <Card key={el} value={el} hidden={!data.cardSetType} />
         ))}
       </div>

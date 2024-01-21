@@ -6,6 +6,7 @@ import { ReducerActions } from "../data/enums";
 import { useNotificationsContext } from "../context/NotificationsContext";
 import GameBoard from "../components/GameBoard";
 import { useUserContext } from "../context/UserContext";
+import { SoundContextProvider } from "../context/SoundContext";
 
 const Game = () => {
   const { userState } = useUserContext();
@@ -16,6 +17,7 @@ const Game = () => {
   useEffect(() => {
     if (socket === null || socket === undefined) return;
     socket.on("server-update-room", (data: any) => {
+      console.log(data);
       gameDispatch({ type: ReducerActions.SET_ROOM_STATE, payload: data.room });
       if (data.swipe) {
         if (userState.id === data.swipe.id) return;
@@ -37,7 +39,11 @@ const Game = () => {
 
   if (!gameState.roomState.gameStarted) return <WaitList socket={socket} />;
 
-  return <GameBoard socket={socket} />;
+  return (
+    <SoundContextProvider>
+      <GameBoard socket={socket} />
+    </SoundContextProvider>
+  );
 };
 
 export default Game;

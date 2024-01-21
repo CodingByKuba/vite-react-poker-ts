@@ -30,3 +30,16 @@ export const parseCardCode = (code: string): string[] => {
 
 export const countMaxPlayers = (startFromCard: number) =>
   Math.floor((47 - startFromCard * 4) / 5);
+
+export const getCurrentSoundFromName = (soundFrom: number) => {
+  if (soundFrom < 0 || soundFrom > 5 || isNaN(soundFrom)) soundFrom = 0;
+  const cardSetNames = [
+    "OFF",
+    "FLUSH",
+    "FULL HOUSE",
+    "FOUR OF A KIND",
+    "STRAIGHT FLUSH",
+    "ROYAL FLUSH",
+  ];
+  return cardSetNames[soundFrom];
+};
