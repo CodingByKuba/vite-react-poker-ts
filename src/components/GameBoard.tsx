@@ -7,6 +7,7 @@ import SwipeCards from "./SwipeCards";
 import GameContent from "./GameContent";
 import { RoomType } from "../data/types";
 import { useSoundContext } from "../context/SoundContext";
+import AnimationsManager from "./AnimationsManager";
 
 const GameBoard = (props: any) => {
   const { gameState } = useGameContext();
@@ -15,6 +16,7 @@ const GameBoard = (props: any) => {
   const { socket } = props;
 
   const [selectedCards, setSelectedCards] = useState<number[]>([]);
+  const [currentAnimation, setCurrentAnimation] = useState<number>(0);
 
   const roomState: RoomType = gameState.roomState;
   const roomId = roomState.id;
@@ -49,16 +51,36 @@ const GameBoard = (props: any) => {
     (el: any) => el.cardSetType === "KOLOR"
   );
 
-  const handlePlaySound = () => {
-    if (sortedWithRoyalFlush.length > 0) return playSound(4);
-    if (sortedWithStraightFlush.length > 0) return playSound(3);
-    if (sortedWithFourOfAKind.length > 0) return playSound(2);
-    if (sortedWithFullHouse.length > 0) return playSound(1);
-    if (sortedWithFlush.length > 0) return playSound(0);
+  const handleAnimationAndPlaySound = () => {
+    if (sortedWithRoyalFlush.length > 0) {
+      setCurrentAnimation(5);
+      playSound(4);
+      return;
+    }
+    if (sortedWithStraightFlush.length > 0) {
+      setCurrentAnimation(4);
+      playSound(3);
+      return;
+    }
+    if (sortedWithFourOfAKind.length > 0) {
+      setCurrentAnimation(3);
+      playSound(2);
+      return;
+    }
+    if (sortedWithFullHouse.length > 0) {
+      setCurrentAnimation(2);
+      playSound(1);
+      return;
+    }
+    if (sortedWithFlush.length > 0) {
+      setCurrentAnimation(1);
+      playSound(0);
+      return;
+    }
   };
 
   useEffect(() => {
-    handlePlaySound();
+    handleAnimationAndPlaySound();
   }, [roomState]);
 
   return (
@@ -89,6 +111,17 @@ const GameBoard = (props: any) => {
           socket={socket}
           selectedCards={selectedCards}
           setSelectedCards={setSelectedCards}
+        />
+      )}
+      {currentAnimation > 0 && (
+        <AnimationsManager
+          sortedWithRoyalFlush={sortedWithRoyalFlush}
+          sortedWithStraightFlush={sortedWithStraightFlush}
+          sortedWithFourOfAKind={sortedWithFourOfAKind}
+          sortedWithFullHouse={sortedWithFullHouse}
+          sortedWithFlush={sortedWithFlush}
+          currentAnimation={currentAnimation}
+          setCurrentAnimation={setCurrentAnimation}
         />
       )}
     </div>

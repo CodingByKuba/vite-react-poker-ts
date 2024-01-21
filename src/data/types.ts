@@ -94,3 +94,8 @@ export type RoomType = {
   roundCount: number;
   roundStarted: boolean;
 };
+
+export type AnimationBoxType = {
+  data: PlayerType[];
+  image: string;
+};

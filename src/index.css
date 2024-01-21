@@ -42,6 +42,22 @@
     background: rgb(255, 255, 125);
   }
 }
+@keyframes showHideAnimation {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.3);
+  }
+}
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-size: calc(10px + 2vmin);
@@ -476,4 +492,47 @@ input.centered {
 }
 #game #swipe-cards p {
   margin: 0.2rem;
+}
+#game #animation-box {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+#game #animation-box.royal-flush {
+  background-color: black;
+}
+#game #animation-box #animation {
+  padding: 1rem;
+  background: linear-gradient(rgb(147, 255, 147), rgb(182, 235, 182));
+  border: 0.2rem solid rgb(0, 34, 0);
+  border-radius: 0.8rem;
+  color: rgb(0, 77, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  flex-direction: column;
+  animation: showHideAnimation 2s linear forwards;
+}
+#game #animation-box #animation img {
+  width: 50vw;
+  max-width: 500px;
+}
+#game #animation-box #animation #nick {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  flex-direction: column;
+}
+#game #animation-box #animation #nick span {
+  font-size: 1.2rem;
+  font-weight: bold;
 }/*# sourceMappingURL=index.css.map */

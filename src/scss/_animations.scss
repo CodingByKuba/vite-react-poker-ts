@@ -45,3 +45,20 @@
     background: $playerBackground;
   }
 }
+
+@keyframes showHideAnimation {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.3);
+  }
+}

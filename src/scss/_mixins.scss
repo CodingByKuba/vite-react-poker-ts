@@ -334,4 +334,34 @@
       margin: 0.2rem;
     }
   }
+  #animation-box {
+    position: fixed;
+    @include flexDisplay();
+    width: 100%;
+    height: 100vh;
+    user-select: none;
+    &.royal-flush {
+      background-color: black;
+    }
+    #animation {
+      padding: 1rem;
+      background: $notificationBackground;
+      border: 0.2rem solid $notificationBorderColor;
+      border-radius: 0.8rem;
+      color: $notificationFontColor;
+      @include flexDisplay($dir: column, $gap: 0.6rem);
+      img {
+        width: 50vw;
+        max-width: 500px;
+      }
+      #nick {
+        @include flexDisplay($dir: column, $gap: 0.3rem);
+        span {
+          font-size: 1.2rem;
+          font-weight: bold;
+        }
+      }
+      animation: showHideAnimation 2s linear forwards;
+    }
+  }
 }
