@@ -342,6 +342,7 @@
     user-select: none;
     &.royal-flush {
       background-color: black;
+      animation: royalFlushHide 20s linear forwards;
     }
     #animation {
       padding: 1rem;
@@ -349,6 +350,15 @@
       border: 0.2rem solid $notificationBorderColor;
       border-radius: 0.8rem;
       color: $notificationFontColor;
+      &.royal-flush {
+        background: $notificationBorderColor;
+        border: 0.2rem solid $notificationBackground;
+        color: white;
+        img,
+        #nick {
+          animation: showCardSetAndNick 20s linear forwards;
+        }
+      }
       @include flexDisplay($dir: column, $gap: 0.6rem);
       img {
         width: 50vw;
@@ -361,7 +371,59 @@
           font-weight: bold;
         }
       }
+      #symbols {
+        @include flexDisplay($dir: row, $gap: 0.3rem);
+        padding: 0.3rem;
+        span {
+          font-size: 2rem;
+          font-weight: bold;
+          &.black {
+            color: black;
+          }
+          &.red {
+            color: red;
+          }
+        }
+      }
       animation: showHideAnimation 2s linear forwards;
+      &.royal-flush {
+        animation: showHideAnimation 20s linear forwards;
+      }
+    }
+
+    #royal-symbols {
+      width: 100%;
+      height: 100vh;
+      position: fixed;
+      span {
+        display: block;
+        position: fixed;
+        padding: 2rem;
+        font-size: 4rem;
+        &.black {
+          color: white;
+        }
+        &.red {
+          color: red;
+        }
+        animation: spinAndScale 4s linear infinite;
+      }
+      span:nth-child(1) {
+        left: 0;
+        top: 0;
+      }
+      span:nth-child(2) {
+        right: 0;
+        top: 0;
+      }
+      span:nth-child(3) {
+        left: 0;
+        bottom: 0;
+      }
+      span:nth-child(4) {
+        right: 0;
+        bottom: 0;
+      }
     }
   }
 }

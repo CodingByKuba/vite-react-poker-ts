@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react";
+
 export type ReducerActionType = {
   type: number;
   payload?: any;
@@ -93,6 +95,16 @@ export type RoomType = {
   roomOwner: Pick<PlayerType, "id">;
   roundCount: number;
   roundStarted: boolean;
+};
+
+export type AnimationsManagerType = {
+  sortedWithFlush: PlayerType[];
+  sortedWithFullHouse: PlayerType[];
+  sortedWithFourOfAKind: PlayerType[];
+  sortedWithStraightFlush: PlayerType[];
+  sortedWithRoyalFlush: PlayerType[];
+  currentAnimation: number;
+  setCurrentAnimation: Dispatch<SetStateAction<number>>;
 };
 
 export type AnimationBoxType = {

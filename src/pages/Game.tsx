@@ -17,7 +17,6 @@ const Game = () => {
   useEffect(() => {
     if (socket === null || socket === undefined) return;
     socket.on("server-update-room", (data: any) => {
-      console.log(data);
       gameDispatch({ type: ReducerActions.SET_ROOM_STATE, payload: data.room });
       if (data.swipe) {
         if (userState.id === data.swipe.id) return;

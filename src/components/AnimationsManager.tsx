@@ -5,8 +5,10 @@ import kareta from "../assets/kareta.png";
 import poker from "../assets/poker.png";
 import royal from "../assets/royal.png";
 import AnimationBox from "./AnimationBox";
+import { AnimationsManagerType } from "../data/types";
+import { useSoundContext } from "../context/SoundContext";
 
-const AnimationsManager = (props: any) => {
+const AnimationsManager = (props: AnimationsManagerType) => {
   const {
     sortedWithFlush,
     sortedWithFullHouse,
@@ -16,6 +18,7 @@ const AnimationsManager = (props: any) => {
     currentAnimation,
     setCurrentAnimation,
   } = props;
+  const { playSound } = useSoundContext();
 
   const DURATION: number = 2000;
   const ROYAL_FLUSH_DURATION: number = 20000;
@@ -23,6 +26,7 @@ const AnimationsManager = (props: any) => {
   let timeout;
 
   useEffect(() => {
+    playSound(currentAnimation - 1);
     timeout = setTimeout(
       () => {
         setCurrentAnimation(0);
@@ -42,6 +46,9 @@ const AnimationsManager = (props: any) => {
 
   if (currentAnimation === 4)
     return <AnimationBox data={sortedWithStraightFlush} image={poker} />;
+
+  if (currentAnimation === 5)
+    return <AnimationBox data={sortedWithRoyalFlush} image={royal} />;
 };
 
 export default AnimationsManager;

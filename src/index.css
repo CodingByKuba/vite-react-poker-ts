@@ -58,6 +58,52 @@
     transform: scale(1.3);
   }
 }
+@keyframes spinAndScale {
+  0% {
+    transform: scale(1);
+    rotate: 0deg;
+  }
+  25% {
+    transform: scale(1.5);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(0.5);
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+  }
+}
+@keyframes royalFlushHide {
+  0% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes showCardSetAndNick {
+  0% {
+    opacity: 0;
+  }
+  12% {
+    opacity: 0;
+  }
+  13% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-size: calc(10px + 2vmin);
@@ -507,6 +553,7 @@ input.centered {
 }
 #game #animation-box.royal-flush {
   background-color: black;
+  animation: royalFlushHide 20s linear forwards;
 }
 #game #animation-box #animation {
   padding: 1rem;
@@ -520,6 +567,15 @@ input.centered {
   gap: 0.6rem;
   flex-direction: column;
   animation: showHideAnimation 2s linear forwards;
+}
+#game #animation-box #animation.royal-flush {
+  background: rgb(0, 34, 0);
+  border: 0.2rem solid linear-gradient(rgb(147, 255, 147), rgb(182, 235, 182));
+  color: white;
+}
+#game #animation-box #animation.royal-flush img,
+#game #animation-box #animation.royal-flush #nick {
+  animation: showCardSetAndNick 20s linear forwards;
 }
 #game #animation-box #animation img {
   width: 50vw;
@@ -535,4 +591,59 @@ input.centered {
 #game #animation-box #animation #nick span {
   font-size: 1.2rem;
   font-weight: bold;
+}
+#game #animation-box #animation #symbols {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  flex-direction: row;
+  padding: 0.3rem;
+}
+#game #animation-box #animation #symbols span {
+  font-size: 2rem;
+  font-weight: bold;
+}
+#game #animation-box #animation #symbols span.black {
+  color: black;
+}
+#game #animation-box #animation #symbols span.red {
+  color: red;
+}
+#game #animation-box #animation.royal-flush {
+  animation: showHideAnimation 20s linear forwards;
+}
+#game #animation-box #royal-symbols {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+}
+#game #animation-box #royal-symbols span {
+  display: block;
+  position: fixed;
+  padding: 2rem;
+  font-size: 4rem;
+  animation: spinAndScale 4s linear infinite;
+}
+#game #animation-box #royal-symbols span.black {
+  color: white;
+}
+#game #animation-box #royal-symbols span.red {
+  color: red;
+}
+#game #animation-box #royal-symbols span:nth-child(1) {
+  left: 0;
+  top: 0;
+}
+#game #animation-box #royal-symbols span:nth-child(2) {
+  right: 0;
+  top: 0;
+}
+#game #animation-box #royal-symbols span:nth-child(3) {
+  left: 0;
+  bottom: 0;
+}
+#game #animation-box #royal-symbols span:nth-child(4) {
+  right: 0;
+  bottom: 0;
 }/*# sourceMappingURL=index.css.map */

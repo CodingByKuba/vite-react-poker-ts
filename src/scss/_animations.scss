@@ -62,3 +62,52 @@
     transform: scale(1.3);
   }
 }
+
+@keyframes spinAndScale {
+  0% {
+    transform: scale(1);
+    rotate: (0deg);
+  }
+  25% {
+    transform: scale(1.5);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(0.5);
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+@keyframes royalFlushHide {
+  0% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes showCardSetAndNick {
+  0% {
+    opacity: 0;
+  }
+  12% {
+    opacity: 0;
+  }
+  13% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}

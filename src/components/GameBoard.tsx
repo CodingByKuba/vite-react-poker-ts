@@ -5,14 +5,12 @@ import GameBottomBar from "./GameBottomBar";
 import GameTopBar from "./GameTopBar";
 import SwipeCards from "./SwipeCards";
 import GameContent from "./GameContent";
-import { RoomType } from "../data/types";
-import { useSoundContext } from "../context/SoundContext";
+import { PlayerType, RoomType } from "../data/types";
 import AnimationsManager from "./AnimationsManager";
 
 const GameBoard = (props: any) => {
   const { gameState } = useGameContext();
   const { userState } = useUserContext();
-  const { playSound } = useSoundContext();
   const { socket } = props;
 
   const [selectedCards, setSelectedCards] = useState<number[]>([]);
@@ -36,47 +34,27 @@ const GameBoard = (props: any) => {
   const myPoints = YOU.points;
 
   const sortedWithRoyalFlush = roomState.players.filter(
-    (el: any) => el.cardSetType === "POKER KRÓLEWSKI"
+    (el: PlayerType) => el.cardSetType === "POKER KRÓLEWSKI"
   );
   const sortedWithStraightFlush = roomState.players.filter(
-    (el: any) => el.cardSetType === "POKER"
+    (el: PlayerType) => el.cardSetType === "POKER"
   );
   const sortedWithFourOfAKind = roomState.players.filter(
-    (el: any) => el.cardSetType === "KARETA"
+    (el: PlayerType) => el.cardSetType === "KARETA"
   );
   const sortedWithFullHouse = roomState.players.filter(
-    (el: any) => el.cardSetType === "FULL"
+    (el: PlayerType) => el.cardSetType === "FULL"
   );
   const sortedWithFlush = roomState.players.filter(
-    (el: any) => el.cardSetType === "KOLOR"
+    (el: PlayerType) => el.cardSetType === "KOLOR"
   );
 
   const handleAnimationAndPlaySound = () => {
-    if (sortedWithRoyalFlush.length > 0) {
-      setCurrentAnimation(5);
-      playSound(4);
-      return;
-    }
-    if (sortedWithStraightFlush.length > 0) {
-      setCurrentAnimation(4);
-      playSound(3);
-      return;
-    }
-    if (sortedWithFourOfAKind.length > 0) {
-      setCurrentAnimation(3);
-      playSound(2);
-      return;
-    }
-    if (sortedWithFullHouse.length > 0) {
-      setCurrentAnimation(2);
-      playSound(1);
-      return;
-    }
-    if (sortedWithFlush.length > 0) {
-      setCurrentAnimation(1);
-      playSound(0);
-      return;
-    }
+    if (sortedWithRoyalFlush.length > 0) return setCurrentAnimation(5);
+    if (sortedWithStraightFlush.length > 0) return setCurrentAnimation(4);
+    if (sortedWithFourOfAKind.length > 0) return setCurrentAnimation(3);
+    if (sortedWithFullHouse.length > 0) return setCurrentAnimation(2);
+    if (sortedWithFlush.length > 0) return setCurrentAnimation(1);
   };
 
   useEffect(() => {
