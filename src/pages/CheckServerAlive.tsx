@@ -35,13 +35,13 @@ const CheckServerAlive = () => {
     <div id="server-check">
       {isPending ? (
         <>
-          Connecting to server...
+          Łączenie z serwerem...
           <Loader />
         </>
       ) : (
         <>
           {fetchError && fetchError}
-          <button onClick={handleCheckServerAlive}>Connect to server...</button>
+          <button onClick={handleCheckServerAlive}>Spróbuj ponownie...</button>
         </>
       )}
     </div>

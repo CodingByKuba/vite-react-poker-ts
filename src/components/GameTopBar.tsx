@@ -17,25 +17,21 @@ const GameTopBar = (props: any) => {
       <div>
         <button
           onClick={() => {
+            if (!confirm("Czy chcesz wyjść z gry?")) return;
             gameDispatch({ type: ReducerActions.RESET });
           }}
         >
-          Go back
+          &nbsp;{"<"}&nbsp;
         </button>
         {!isRoundStarted && isRoomOwner && (
-          <>
-            <button
-              onClick={() => {
-                if (!confirm("Do you want to finish game?")) return;
-                socket.emit("client-stop-game");
-              }}
-            >
-              Finish game
-            </button>
-            <button onClick={() => socket.emit("client-start-round")}>
-              Start round
-            </button>
-          </>
+          <button
+            onClick={() => {
+              if (!confirm("Czy chcesz zakończyć grę?")) return;
+              socket.emit("client-stop-game");
+            }}
+          >
+            KONIEC GRY
+          </button>
         )}
       </div>
       <div>
@@ -54,13 +50,13 @@ const GameTopBar = (props: any) => {
         <button
           onClick={() => {
             navigator.clipboard.writeText(roomId);
-            addNotification("Copied room ID number");
+            addNotification("Skopiowano numer ID pokoju");
           }}
         >
           ID: {roomId}
         </button>
       </div>
-      <div>Round {currentRound}</div>
+      <div>Runda {currentRound}</div>
     </div>
   );
 };

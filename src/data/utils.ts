@@ -33,13 +33,9 @@ export const countMaxPlayers = (startFromCard: number) =>
 
 export const getCurrentSoundFromName = (soundFrom: number) => {
   if (soundFrom < 0 || soundFrom > 5 || isNaN(soundFrom)) soundFrom = 0;
-  const cardSetNames = [
-    "OFF",
-    "FLUSH",
-    "FULL HOUSE",
-    "FOUR OF A KIND",
-    "STRAIGHT FLUSH",
-    "ROYAL FLUSH",
-  ];
+  const cardSetNames = ["OFF", "KOLOR", "FULL", "KARETA", "POKER", "POKER KR."];
   return cardSetNames[soundFrom];
 };
+
+export const generateRoomId = () =>
+  (100000 + Math.random() * 899999).toFixed(0);

@@ -7,7 +7,7 @@ const Player = (props: any) => {
     <div id="player" className={data.turn ? "turn" : ""}>
       <div id="player-info">
         <span>
-          {data.nick} - {data.points} points{" "}
+          {data.nick} - {data.points} pkt{" "}
           {data.additionalPoints > 0 && ` (+${data.additionalPoints})`}
         </span>
         {data.cardSetType && <div>{data.cardSetType}</div>}

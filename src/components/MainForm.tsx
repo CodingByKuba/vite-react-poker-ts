@@ -6,6 +6,7 @@ import Loader from "./Loader";
 import config from "../data/config";
 import { useGameContext } from "../context/GameContext";
 import { useNotificationsContext } from "../context/NotificationsContext";
+import { generateRoomId } from "../data/utils";
 
 const MainForm = () => {
   const { userState, userDispatch } = useUserContext();
@@ -14,15 +15,22 @@ const MainForm = () => {
   const { addNotification } = useNotificationsContext();
 
   const handleCreateRoom = () => {
-    if (!userState.nick) return addNotification("Enter your nick");
-    if (!userState.roomId || userState.roomId.length !== 6)
-      return addNotification("Room ID is not correct");
+    if (!userState.nick) return addNotification("Wprowadź swój nick");
+    let currentRoomId = userState.roomId ? userState.roomId : generateRoomId();
+    if (!userState.roomId) {
+      return userDispatch({
+        type: ReducerActions.SET_ROOM,
+        payload: currentRoomId.toString(),
+      });
+    }
+    if (userState.roomId.length !== 6)
+      return addNotification("Niepoprawne ID pokoju");
     fetchCallback({
       url: URL.room,
       method: "POST",
       timeout: 5000,
       payload: {
-        roomId: userState.roomId,
+        roomId: currentRoomId,
         id: userState.id,
         nick: userState.nick,
         startFromCard: userState.roomOptions.startFromCard,
@@ -52,9 +60,9 @@ const MainForm = () => {
   };
 
   const handleJoinRoom = () => {
-    if (!userState.nick) return addNotification("Enter your nick");
+    if (!userState.nick) return addNotification("Wprowadź swój nick");
     if (!userState.roomId || userState.roomId.length !== 6)
-      return addNotification("Room ID is not correct");
+      return addNotification("Niepoprawne ID pokoju");
     fetchCallback({
       url: URL.room,
       method: "PUT",
@@ -99,7 +107,7 @@ const MainForm = () => {
         max={999999}
         name="id"
         autoComplete="true"
-        placeholder="Room ID..."
+        placeholder="ID pokoju..."
         className="centered"
         value={userState.roomId}
         onChange={(e) => {
@@ -118,10 +126,10 @@ const MainForm = () => {
       ) : (
         <div id="buttons">
           <button onClick={handleCreateRoom}>
-            <BsServer /> Host
+            <BsServer /> Hostuj
           </button>
           <button onClick={handleJoinRoom}>
-            <BsArrowRightCircleFill /> Join
+            <BsArrowRightCircleFill /> Dołącz
           </button>
         </div>
       )}

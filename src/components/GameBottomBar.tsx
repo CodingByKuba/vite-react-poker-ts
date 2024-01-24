@@ -1,5 +1,4 @@
 import Card from "./Card";
-import { BsBullseye } from "react-icons/bs";
 
 const GameBottomBar = (props: any) => {
   const {
@@ -35,9 +34,16 @@ const GameBottomBar = (props: any) => {
           />
         ))}
       </div>
-      <div>
-        <BsBullseye /> {myPoints} points{" "}
-        {additionalPoints > 0 && `(+${additionalPoints})`}
+      <div id="my-points">
+        <span>
+          Twoje punkty: {myPoints}{" "}
+          {additionalPoints > 0 && `(+${additionalPoints})`}
+        </span>
+        {!isRoundStarted && isRoomOwner && (
+          <button onClick={() => socket.emit("client-start-round")}>
+            NOWA RUNDA
+          </button>
+        )}
       </div>
       {cardSet && <div id="card-set">{cardSet}</div>}
       {roundReadyToBeFinished && isRoomOwner && isRoundStarted && (

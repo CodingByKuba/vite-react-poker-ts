@@ -16,9 +16,17 @@ const RoomOptions = (props: RoomOptionsComponentType) => {
       >
         <BsArrowLeftCircle />
       </button>
-      Start from card (max{" "}
-      {countMaxPlayers(userState.roomOptions.startFromCard)} players):
-      <Card value={userState.roomOptions.startFromCard + 2 + "-H"} />
+      Startuj od karty (max. graczy:{" "}
+      {countMaxPlayers(userState.roomOptions.startFromCard)}):
+      <Card
+        value={userState.roomOptions.startFromCard + 2 + "-H"}
+        onClick={() =>
+          userDispatch({
+            type: ReducerActions.SET_OPTIONS_STARTCARD,
+            payload: userState.roomOptions.startFromCard + 1,
+          })
+        }
+      />
       <input
         type="range"
         min={0}
@@ -31,11 +39,11 @@ const RoomOptions = (props: RoomOptionsComponentType) => {
           })
         }
       />
-      Card set points:
+      Punkty układów kart:
       <div id="cardset-points">
         <div className="column">
           <div className="row">
-            HIGH CARD
+            WYSOKA KARTA
             <input
               type="number"
               className="centered"
@@ -53,7 +61,7 @@ const RoomOptions = (props: RoomOptionsComponentType) => {
             />
           </div>
           <div className="row">
-            TWO PAIRS
+            DWIE PARY
             <input
               type="number"
               className="centered"
@@ -71,7 +79,7 @@ const RoomOptions = (props: RoomOptionsComponentType) => {
             />
           </div>
           <div className="row">
-            STRAIGHT
+            STRIT
             <input
               type="number"
               className="centered"
@@ -89,7 +97,7 @@ const RoomOptions = (props: RoomOptionsComponentType) => {
             />
           </div>
           <div className="row">
-            FULL HOUSE
+            FULL
             <input
               type="number"
               className="centered"
@@ -107,7 +115,7 @@ const RoomOptions = (props: RoomOptionsComponentType) => {
             />
           </div>
           <div className="row">
-            STRAIGHT FLUSH
+            POKER
             <input
               type="number"
               className="centered"
@@ -127,7 +135,7 @@ const RoomOptions = (props: RoomOptionsComponentType) => {
         </div>
         <div className="column">
           <div className="row">
-            ONE PAIR
+            PARA
             <input
               type="number"
               className="centered"
@@ -145,7 +153,7 @@ const RoomOptions = (props: RoomOptionsComponentType) => {
             />
           </div>
           <div className="row">
-            THREE OF A KIND
+            TRÓJKA
             <input
               type="number"
               className="centered"
@@ -163,7 +171,7 @@ const RoomOptions = (props: RoomOptionsComponentType) => {
             />
           </div>
           <div className="row">
-            FLUSH
+            KOLOR
             <input
               type="number"
               className="centered"
@@ -181,7 +189,7 @@ const RoomOptions = (props: RoomOptionsComponentType) => {
             />
           </div>
           <div className="row">
-            FOUR OF A KIND
+            KARETA
             <input
               type="number"
               className="centered"
@@ -199,7 +207,7 @@ const RoomOptions = (props: RoomOptionsComponentType) => {
             />
           </div>
           <div className="row">
-            ROYAL FLUSH
+            POKER KRÓLEWSKI
             <input
               type="number"
               className="centered"

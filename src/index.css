@@ -437,8 +437,16 @@ input.centered {
   gap: 0.5rem;
   flex-direction: column;
   padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
   width: 100%;
   flex: 1;
+}
+#game #game-content::-webkit-scrollbar {
+  display: none;
 }
 #game #game-content #player {
   background: rgb(255, 255, 125);
@@ -492,6 +500,14 @@ input.centered {
 }
 #game #game-bottom-bar #my-cards {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-direction: row;
+}
+#game #game-bottom-bar #my-points {
+  padding-top: 0.2rem;
   display: flex;
   align-items: center;
   justify-content: center;

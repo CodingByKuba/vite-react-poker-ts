@@ -3,8 +3,8 @@ const SwipeCards = (props: any) => {
 
   return (
     <div id="swipe-cards">
-      <p>It's your turn</p>
-      <span>Select cards to swipe...</span>
+      <p>Twoja kolej!</p>
+      <span>Zaznacz karty do wymiany...</span>
       <hr />
       <button
         onClick={() => {
@@ -13,8 +13,8 @@ const SwipeCards = (props: any) => {
         }}
       >
         {selectedCards.length > 0
-          ? "Swipe " + selectedCards.length + " cards"
-          : "Do not swipe"}
+          ? "WYMIEŃ KARTY: " + selectedCards.length
+          : "NIE WYMIENIAJ KART"}
       </button>
     </div>
   );

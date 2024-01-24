@@ -23,8 +23,8 @@ const Game = () => {
         addNotification(
           data.swipe.nick +
             (data.swipe.cards
-              ? " is changing " + data.swipe.cards + " cards"
-              : " is not changing cards")
+              ? " wymienia karty: " + data.swipe.cards
+              : " nie wymienia kart")
         );
       }
     });

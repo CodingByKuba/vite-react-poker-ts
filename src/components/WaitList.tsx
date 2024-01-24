@@ -1,10 +1,12 @@
 import { useGameContext } from "../context/GameContext";
+import { useNotificationsContext } from "../context/NotificationsContext";
 import { useUserContext } from "../context/UserContext";
 import { ReducerActions } from "../data/enums";
 
 const WaitList = (props: any) => {
   const { gameState, gameDispatch } = useGameContext();
   const { userState } = useUserContext();
+  const { addNotification } = useNotificationsContext();
   const { socket } = props;
 
   const readyState = gameState.roomState.players.filter(
@@ -27,14 +29,22 @@ const WaitList = (props: any) => {
             gameDispatch({ type: ReducerActions.RESET });
           }}
         >
-          Go back
+          &nbsp;{"<"}&nbsp;
+        </button>
+        <button
+          onClick={() => {
+            navigator.clipboard.writeText(userState.roomId);
+            addNotification("Skopiowano numer ID pokoju");
+          }}
+        >
+          ID: {userState.roomId}
         </button>
         <button
           onClick={() => {
             socket.emit("client-switch-ready");
           }}
         >
-          {readyState ? "Ready" : "Not ready"}
+          {readyState ? "GOTOWY" : "NIEGOTOWY"}
         </button>
         {allPlayersReady && isRoomOwner && isMinTwoPlayers && (
           <button
@@ -42,7 +52,7 @@ const WaitList = (props: any) => {
               socket.emit("client-start-game");
             }}
           >
-            Start game
+            START GRY
           </button>
         )}
       </nav>
@@ -51,15 +61,15 @@ const WaitList = (props: any) => {
         <>
           <span>
             {!isMinTwoPlayers
-              ? "Not enough players"
+              ? "Za mało graczy..."
               : gameState.roomState.players.length ===
                 gameState.roomState.maxPlayers
               ? allPlayersReady
-                ? "Time to start!"
-                : "Waiting for ready players..."
+                ? "Czas na start!"
+                : "Oczekiwanie na gotowych graczy..."
               : allPlayersReady
-              ? "Time to start!"
-              : "Waiting for players..."}
+              ? "Czas na start!"
+              : "Oczekiwanie na graczy..."}
           </span>
           <span>
             ({gameState.roomState.players.length}/
