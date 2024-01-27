@@ -51,7 +51,7 @@ const GameBottomBar = (props: any) => {
           id="finish-round"
           onClick={() => socket.emit("client-finish-round")}
         >
-          Tap to finish round
+          Zakończ rundę...
         </div>
       )}
     </div>

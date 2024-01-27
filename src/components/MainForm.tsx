@@ -1,18 +1,28 @@
 import { BsServer, BsArrowRightCircleFill } from "react-icons/bs";
 import { useUserContext } from "../context/UserContext";
-import { ReducerActions, URL } from "../data/enums";
+import { ReducerActions, STORAGE, URL } from "../data/enums";
 import { useFetchContext } from "../context/FetchContext";
 import Loader from "./Loader";
 import config from "../data/config";
 import { useGameContext } from "../context/GameContext";
 import { useNotificationsContext } from "../context/NotificationsContext";
 import { generateRoomId } from "../data/utils";
+import useLocalStorage from "../hooks/useLocalStorage";
+import { useEffect } from "react";
 
 const MainForm = () => {
   const { userState, userDispatch } = useUserContext();
   const { isPending, fetchCallback } = useFetchContext();
   const { gameDispatch } = useGameContext();
   const { addNotification } = useNotificationsContext();
+
+  const [nick, setNick] = useLocalStorage(STORAGE.nick, "");
+
+  useEffect(() => {
+    if (nick) {
+      userDispatch({ type: ReducerActions.SET_NICK, payload: nick });
+    }
+  }, []);
 
   const handleCreateRoom = () => {
     if (!userState.nick) return addNotification("Wprowadź swój nick");
@@ -95,6 +105,7 @@ const MainForm = () => {
         className="centered"
         value={userState.nick}
         onChange={(e) => {
+          setNick(e.target.value);
           userDispatch({
             type: ReducerActions.SET_NICK,
             payload: e.target.value,

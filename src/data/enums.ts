@@ -16,3 +16,7 @@ export enum ReducerActions {
 export enum URL {
   room = "/room",
 }
+
+export enum STORAGE {
+  nick = "cfgame-nick",
+}
