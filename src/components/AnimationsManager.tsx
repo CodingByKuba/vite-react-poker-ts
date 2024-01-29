@@ -23,7 +23,7 @@ const AnimationsManager = (props: AnimationsManagerType) => {
   const DURATION: number = 2000;
   const ROYAL_FLUSH_DURATION: number = 20000;
 
-  let timeout;
+  let timeout: any;
 
   useEffect(() => {
     playSound(currentAnimation - 1);
@@ -33,6 +33,8 @@ const AnimationsManager = (props: AnimationsManagerType) => {
       },
       currentAnimation < 5 ? DURATION : ROYAL_FLUSH_DURATION
     );
+
+    return () => clearTimeout(timeout);
   }, []);
 
   if (currentAnimation === 1)
