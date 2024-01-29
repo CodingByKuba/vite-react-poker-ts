@@ -14,7 +14,6 @@ export const NotificationsContextProvider: React.FC<UserProviderType> = ({
 
   const addNotification = (message: string) => {
     if (!message) return;
-    let timeout;
     const notificationId: string = generateRandomId();
 
     setNotifications((prev) => [
@@ -25,7 +24,7 @@ export const NotificationsContextProvider: React.FC<UserProviderType> = ({
       },
     ]);
 
-    timeout = setTimeout(() => {
+    setTimeout(() => {
       setNotifications((prev) => prev.filter((el) => el.id !== notificationId));
     }, config.NOTIFICATION_TIME);
   };
