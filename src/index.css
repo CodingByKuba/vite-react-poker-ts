@@ -235,6 +235,9 @@ body {
   font-size: 0.7rem;
   font-weight: bold;
 }
+#room-options #cardset-points .column .row input {
+  max-width: 5rem;
+}
 
 #options-button-container {
   position: fixed;

@@ -92,6 +92,9 @@
         @include flexDisplay($dir: column, $gap: 0.3rem);
         font-size: 0.7rem;
         font-weight: bold;
+        input {
+          max-width: 5rem;
+        }
       }
     }
   }
